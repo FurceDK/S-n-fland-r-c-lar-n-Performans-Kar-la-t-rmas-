@@ -1,0 +1,87 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed May 10 00:59:14 2023
+
+@author: Dcan
+"""
+
+from sklearn.datasets import load_digits
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import SGDClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.ensemble import RandomForestClassifier
+
+import matplotlib.pyplot as plt
+
+digits = load_digits()
+
+X_train, X_test, y_train, y_test = train_test_split(digits.data, digits.target, test_size=0.3)
+
+# Decision Tree Classifier
+clf = DecisionTreeClassifier()
+clf.fit(X_train, y_train)
+
+print("Decision Tree Classifier Score:", clf.score(X_test, y_test))
+
+plt.imshow(X_test[0].reshape(8, 8), cmap='gray')
+plt.show()
+
+print(f"Test edilen örnek {clf.predict([X_test[0]])} rakamını temsil ediyor.\n")
+
+# SVM Classifier
+svm = SVC()
+svm.fit(X_train, y_train)
+
+print("SVM Classifier Score:", svm.score(X_test, y_test))
+
+plt.imshow(X_test[1].reshape(8, 8), cmap='gray')
+plt.show()
+
+print(f"Test edilen örnek {svm.predict([X_test[1]])} rakamını temsil ediyor.\n")
+
+# KNN Classifier
+knn = KNeighborsClassifier()
+knn.fit(X_train, y_train)
+
+print("KNN Classifier Score:", knn.score(X_test, y_test))
+
+plt.imshow(X_test[2].reshape(8, 8), cmap='gray')
+plt.show()
+
+print(f"Test edilen örnek {knn.predict([X_test[2]])} rakamını temsil ediyor.\n")
+
+# Stochastic Gradient Descent Classifier
+sgd = SGDClassifier()
+sgd.fit(X_train, y_train)
+
+print("Stochastic Gradient Descent Classifier Score:", sgd.score(X_test, y_test))
+
+plt.imshow(X_test[3].reshape(8, 8), cmap='gray')
+plt.show()
+
+print(f"Test edilen örnek {sgd.predict([X_test[3]])} rakamını temsil ediyor.\n")
+
+# Naive Bayes Classifier
+nb = GaussianNB()
+nb.fit(X_train, y_train)
+
+print("Naive Bayes Classifier Score:", nb.score(X_test, y_test))
+
+plt.imshow(X_test[4].reshape(8, 8), cmap='gray')
+plt.show()
+
+print(f"Test edilen örnek {nb.predict([X_test[4]])} rakamını temsil ediyor.\n")
+
+# Random Forest Classifier
+rfc = RandomForestClassifier()
+rfc.fit(X_train, y_train)
+
+print("Random Forest Classifier Score:", rfc.score(X_test, y_test))
+
+plt.imshow(X_test[5].reshape(8, 8), cmap='gray')
+plt.show()
+
+print(f"Test edilen örnek {rfc.predict([X_test[5]])} rakamını temsil ediyor.")
